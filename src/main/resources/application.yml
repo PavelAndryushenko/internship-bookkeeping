@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: internship-bookkeeping
+
+logging:
+  level:
+    team.mediasoft.internship.bookkeeping: debug
