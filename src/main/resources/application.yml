@@ -1,6 +1,11 @@
 spring:
   application:
     name: internship-bookkeeping
+  datasource:
+    name: postgres
+    url: jdbc:postgresql://localhost:5432/${spring.datasource.name}
+    username: ${spring.datasource.name}
+    password: ${spring.datasource.name}
 
 logging:
   level:
