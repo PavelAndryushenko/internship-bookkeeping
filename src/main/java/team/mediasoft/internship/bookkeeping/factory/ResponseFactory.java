@@ -8,6 +8,10 @@ import team.mediasoft.internship.bookkeeping.dto.ResponseDto;
 public class ResponseFactory {
 
     public static <T> ResponseDto<T> createSuccessfulResponse(T payload) {
-        return new ResponseDto<T>(HttpStatus.OK.value(), null, payload);
+        return new ResponseDto<>(HttpStatus.OK.value(), null, payload);
+    }
+
+    public static ResponseDto<Void> createFailedResponse(HttpStatus status, String description) {
+        return new ResponseDto<>(status.value(), description, null);
     }
 }
