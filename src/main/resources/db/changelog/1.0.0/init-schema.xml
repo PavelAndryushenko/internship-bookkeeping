@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="20230703-001" author="Pavel A Andryushenko">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="categories" />
+            </not>
+        </preConditions>
+        <createTable tableName="categories" remarks="Таблица категорий">
+            <column name="id" type="INTEGER" remarks="Уникальный идентификатор категории">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_category" />
+            </column>
+            <column name="name" type="VARCHAR" remarks="Название категории" />
+        </createTable>
+        <addAutoIncrement tableName="categories" columnName="id" />
+    </changeSet>
+
+    <changeSet id="20230703-002" author="Pavel A Andryushenko">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="debits" />
+            </not>
+        </preConditions>
+        <createTable tableName="debits" remarks="Таблица расходов">
+            <column name="id" type="BIGINT" remarks="Уникальный идентификатор расхода">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_debit" />
+            </column>
+            <column name="category_id" type="BIGINT" remarks="ID категории" />
+            <column name="value" type="double" remarks="Сумма расхода" />
+            <column name="debit_time" type="datetime" remarks="Время создания расхода" />
+            <column name="description" type="VARCHAR" remarks="Описание расхода" />
+        </createTable>
+        <addAutoIncrement tableName="categories" columnName="id" />
+        <addForeignKeyConstraint constraintName="fk_debit_categories" baseTableName="debits" baseColumnNames="category_id" referencedTableName="categories" referencedColumnNames="id" />
+    </changeSet>
+
+</databaseChangeLog>

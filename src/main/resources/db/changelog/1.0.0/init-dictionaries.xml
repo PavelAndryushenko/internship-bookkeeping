@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="20230703-003" author="Pavel A Andryushenko">
+        <insert tableName="categories">
+            <column name="name" value="Продукты"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Развлечения"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="name" value="Авто"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
